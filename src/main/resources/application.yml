@@ -1,0 +1,91 @@
+# active spring boot profile
+spring:
+   profiles:
+      active: dev   
+
+---
+
+# common - spring configuration
+spring:
+
+   # devtools - live reload
+   devtools:
+      livereload:
+         enabled: true
+
+   # mvc
+   mvc:
+      view:
+         prefix: /WEB-INF/views/
+         suffix: .jsp
+
+
+
+   # multipart
+   servlet:
+      multipart:
+         enabled: true
+         max-file-size: 50MB
+         max-request-size: 50MB
+
+  
+
+---
+
+# dev profile - spring boot configuration
+
+spring:
+   config:
+      activate:
+         on-profile: dev
+      
+   # datasource
+   datasource:
+      username: dv01
+      password: 123!
+      driver-class-name: org.mariadb.jdbc.Driver
+      url: jdbc:mysql://34.64.187.132:3306/doki?characterEncoding=utf8
+      hikari:
+         minimum-idle: 10
+         maximum-pool-size: 20
+
+---
+
+# production profile - spring boot configuration
+spring:
+   config:
+      activate:
+         on-profile: production
+
+   # datasource
+   datasource:
+      username: webdb
+      password: webdb
+      driver-class-name: org.mariadb.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/webdb?characterEncoding=utf8
+      hikari:
+         minimum-idle: 100
+         maximum-pool-size: 200
+
+---
+
+# server
+server:
+   port: 8080
+   servlet:
+     context-path: /doki
+     encoding:
+        charset: utf-8
+        enabled: true
+        force: false
+        force-request: false
+        force-response: false
+
+---
+
+# mybatis
+mybatis:
+   config-location: classpath:mybatis/configuration.xml
+
+
+
