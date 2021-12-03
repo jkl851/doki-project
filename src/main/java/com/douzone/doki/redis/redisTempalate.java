@@ -27,12 +27,12 @@ public class redisTempalate {
 		System.out.println("key : " + key);
 
 		// when
-		valueOperations.set(key, chatVo.getMessage());
+//		valueOperations.set(key, chatVo.getMessage());
 
 
 		// then
-		String value = valueOperations.get(key);
-		System.out.println("value : " + value);
+//		String value = valueOperations.get(key);
+//		System.out.println("value : " + value);
 
 		//Boolean expire = redisTemplate.expire(key, 5, TimeUnit.SECONDS);
 		

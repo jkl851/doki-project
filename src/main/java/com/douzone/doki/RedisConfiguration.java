@@ -19,10 +19,8 @@ import com.douzone.doki.vo.ChatVo;
 @ComponentScan("com.douzone.doki")
 public class RedisConfiguration {
 	
-	
 	@Autowired
 	private ChatService chatService;
-	
 	
 	@Value("${spring.redis.host}")
 	private String host;
@@ -50,7 +48,7 @@ public class RedisConfiguration {
 		chatVo.setMessage("2번 test2");
 		chatVo.setUserNo(1L);
 		chatVo.setDepartmentNo(1L);
-		chatService.insert(chatVo);
+//		chatService.insert(chatVo);
 		System.out.println("인설트 완료");
 		
 	}
