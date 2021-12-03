@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.douzone.doki.repository.UserRepository">
+	<update id="updateUser">
+		<![CDATA[
+			update user set
+					id='abc55',
+					password='12355',
+					user_name='또치55',
+					comment='55',
+					email='ddochi55@gmail.com'
+					where no=5;
+		]]>
+	</update>
+
+	<select id="findByNo" parameterType="long" resultType="userVo">
+		<![CDATA[
+			select 
+				no,
+				id,
+			    user_name,
+			    image,
+			    position,
+			    comment,
+			    email
+			from user
+		  where no = #{no }	
+		]]>
+	</select>
+
+</mapper>
