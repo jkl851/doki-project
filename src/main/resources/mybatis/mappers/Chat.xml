@@ -8,4 +8,12 @@
 		]]>
 	</insert>
 
+	<select id="getChatList" resultType="chatvo">
+		<![CDATA[
+			select no, message, date, user_no, department_no
+			  from chat_message
+			 where department_no=#{no}
+		  order by date asc;
+		]]>
+	</select>
 </mapper>

@@ -36,7 +36,15 @@
 					left outer join memo_alarm ma on m.no = ma.memo_no 
 					left outer join memo_hash mh on m.no = mh.memo_no
 					left outer join hash h on h.no = mh.hash_no
-				where m.department_no = #{ groupNo };
+				where m.department_no = #{ groupNo }
+			 order by m.important desc, m.pin desc, m.reg_date desc
 		]]>
 	</select>
+	
+	
+	
+	
+	
+	
+	
 </mapper>

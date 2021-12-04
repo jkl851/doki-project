@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.douzone.doki.repository.MemoRepository;
 import com.douzone.doki.vo.MemoVo;
+import com.douzone.doki.vo.UserVo;
 
 @Service
 @Transactional(readOnly = true)
@@ -48,5 +49,6 @@ public class MemoService {
 	System.out.println(map);
 	return memoRepository.addMemoHash(map);
     }
+    
 
 }

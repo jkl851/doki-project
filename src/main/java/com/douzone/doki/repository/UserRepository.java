@@ -1,5 +1,7 @@
 package com.douzone.doki.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -10,19 +12,9 @@ import com.douzone.doki.vo.UserVo;
 public interface UserRepository {
 	
 	public boolean updateUser(UserVo vo);
-	
-	
-//    public boolean changeColor();
-//    public List<MemoVo> getListByGroup(Long groupNo);
-	
 	public UserVo findByNo(Long no);
-//	{
-//		return sqlSession.selectOne("user.findByNo", no);
-//	}
+	public List<UserVo> getUserList(Long no);
 
-//	{
-//		int count = sqlSession.update("user.update", vo);
-//		return count;
-//	}
-
+	
+	
 }

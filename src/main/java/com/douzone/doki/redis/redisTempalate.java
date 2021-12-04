@@ -17,14 +17,14 @@ public class redisTempalate {
 	@Bean
 	public void redisString() {
 
-		ChatVo chatVo = new ChatVo();
-		chatVo.setMessage("set 5");
-		chatVo.setNo(5L);
+//		ChatVo chatVo = new ChatVo();
+//		chatVo.setMessage("set 5");
+//		chatVo.setNo(5L);
 		// 데이터 주기
-		ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
+//		ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
 
-		String key = chatVo.getNo().toString();
-		System.out.println("key : " + key);
+//		String key = chatVo.getNo().toString();
+//		System.out.println("key : " + key);
 
 		// when
 //		valueOperations.set(key, chatVo.getMessage());

@@ -1,5 +1,7 @@
 package com.douzone.doki.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +16,13 @@ public class UserService {
 	public UserVo findUser(Long no) {
 		return userRepository.findByNo(no);
 	}
-	
 
 	public boolean updateUser(UserVo userVo) {
 		return userRepository.updateUser(userVo);
 	}
 	
-	
+	public List<UserVo> getUserList(Long departmentNo) {
+		return userRepository.getUserList(departmentNo);
+	}
+
 }
