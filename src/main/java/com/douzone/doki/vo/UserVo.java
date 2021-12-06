@@ -15,5 +15,6 @@ public class UserVo {
     private String position;
     private String comment;
     private String email;
+    private Long auth;
     
 }

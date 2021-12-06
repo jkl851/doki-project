@@ -50,5 +50,14 @@ public class MemoService {
 	return memoRepository.addMemoHash(map);
     }
     
-
+    public boolean modifyMemo(MemoVo vo) {
+    	return memoRepository.modifyMemo(vo);
+    }
+    
+    
+    public MemoVo findMemo(Long no) {
+    	return memoRepository.findMemo(no);
+    }
+    
+    
 }

@@ -1,17 +1,22 @@
 package com.douzone.doki.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.douzone.doki.service.MemoService;
 import com.douzone.doki.vo.MemoVo;
+
+import io.lettuce.core.dynamic.annotation.Param;
 
 @RestController
 public class MemoController {
@@ -81,5 +86,40 @@ public class MemoController {
 		System.out.println("==========================================");
 		return ResponseEntity.ok().body(result);
 	};
+	
+	
+	//메모no를 파라미터로 받아옴
+	@ResponseBody
+	@PostMapping("/updateMemo/{no}")
+	public ResponseEntity<MemoVo> updateMemo(
+			@PathVariable("no") Optional<Long> no,
+			MemoVo vo) {
+		System.out.println("vo 정보 : " + vo);
+		
+		//전후 비교하기위해 호출, 지워도됨
+		MemoVo memovo = memoService.findMemo(no.get());
+		System.out.println("수정전 memovo : " + memovo);
+		
+		//메모 수정 작업
+		vo.setNo(no.get());
+		boolean result = memoService.modifyMemo(vo);
+		
+		//에러 처리
+		if(result == false) {
+			System.out.println("updateMemo error");
+			return ResponseEntity.noContent().build();
+		}
+		
+		
+		//수정 후 해당 메모 호출 -> ajax로 메모수정?? redis? 일단 모르겟음 호출해봄
+		memovo = memoService.findMemo(no.get());
+		System.out.println("수정후 memovo : " + memovo);
+		
+		
+		return ResponseEntity.ok().body(memovo);
+	}
+	
+	
+	
 
 }

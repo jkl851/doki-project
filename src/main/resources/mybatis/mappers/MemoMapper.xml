@@ -31,7 +31,7 @@
 		<![CDATA[
 			select 	m.no as no, m.contents as contents, m.color as color, m.reg_date as regDate, m.pin as pin,
 					m.important as important, m.user_no as userNo, m.department_no as departmentNo, h.name as hashName,
-					ma.time as memoAlarmTime, ma.repetition as repetition
+					ma.memo_alarm_time as memoAlarmTime, ma.repetition as repetition
 				from memo m 
 					left outer join memo_alarm ma on m.no = ma.memo_no 
 					left outer join memo_hash mh on m.no = mh.memo_no
@@ -41,10 +41,24 @@
 		]]>
 	</select>
 	
+	<update id="modifyMemo">
+		<![CDATA[
+			update memo set 
+				contents=#{contents}
+			    where no = #{no};
+		]]>
+	</update>
 	
-	
-	
-	
+	<select id="findMemo" parameterType="Long" resultType="memovo">
+		<![CDATA[
+ 			select 	m.no as no, m.contents as contents, m.color as color, m.reg_date as regDate, m.pin as pin,
+					m.important as important, m.user_no as userNo, m.department_no as departmentNo,
+					ma.memo_alarm_time as memoAlarmTime, ma.repetition as repetition
+				from memo m, memo_alarm ma
+                where m.no = ma.memo_no
+                  and m.no= #{no}
+		]]>
+	</select>
 	
 	
 </mapper>

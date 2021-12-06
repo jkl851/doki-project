@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.douzone.doki.vo.MemoVo;
-import com.douzone.doki.vo.UserVo;
 
 @Repository
 @Mapper
@@ -17,6 +16,7 @@ public interface MemoRepository {
     public boolean addHash(String hashName);
     public boolean addMemoHash(Map<String, Long> map);
     public List<MemoVo> getListByGroup(Long groupNo);
-	
+	public boolean modifyMemo(MemoVo vo);
+	public MemoVo findMemo(Long no);
 	
 }
