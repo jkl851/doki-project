@@ -11,10 +11,14 @@ import com.douzone.doki.vo.MemoVo;
 @Repository
 @Mapper
 public interface MemoRepository {
-    public boolean changeColor();
+    public boolean changeColor(MemoVo vo);
     public boolean addMemo(MemoVo vo);
     public boolean addHash(String hashName);
-    public boolean addMemoHash(Map<String, Long> map);
+    public boolean addMemoHash(MemoVo vo);
+    public boolean addMemoAlarm(MemoVo vo);
+    public boolean setPin(MemoVo vo);
+    public boolean setImportant(MemoVo vo);
     public List<MemoVo> getListByGroup(Long groupNo);
+    public List<MemoVo> getMemoListByHash(MemoVo vo);
 
 }
