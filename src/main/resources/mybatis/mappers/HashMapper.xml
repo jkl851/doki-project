@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.douzone.doki.repository.HashRepository">
+	<select id="getHashList" resultType="hashvo">
+		<![CDATA[
+			select h.no as no, h.name as name
+		  	  from memo m, memo_hash mh, hash h
+			 where m.no =  mh.memo_no
+			   and mh.hash_no = h.no
+			   and m.department_no = #{no}
+	      order by h.name asc;
+		]]>
+	</select>
+
+	
+	
+	
+</mapper>

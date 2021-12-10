@@ -14,7 +14,7 @@
 		]]>
 	</update>
 
-	<select id="findByNo" parameterType="long" resultType="userVo">
+	<select id="findByNo" parameterType="long" resultType="uservo">
 		<![CDATA[
 			select 
 				no,
@@ -26,6 +26,15 @@
 			    email
 			from user
 		  where no = #{no }	
+		]]>
+	</select>
+	
+	<select id="getUserList" resultType="uservo">
+		<![CDATA[
+			select u.no, u.user_name as userName, u.image, u.position, du.auth
+			  from user u, department_user du
+			 where u.no = du.user_no
+				   and du.department_no = #{no}
 		]]>
 	</select>
 

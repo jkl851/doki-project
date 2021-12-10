@@ -1,7 +1,6 @@
 package com.douzone.doki.repository;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -21,5 +20,7 @@ public interface MemoRepository {
     public List<MemoVo> getListByGroup(Long groupNo);
     public List<MemoVo> getMemoListByHash(MemoVo vo);
     public List<MemoVo> getAllHashList();
-
+    
+	public boolean modifyMemo(MemoVo vo);
+	public MemoVo findMemo(Long no);
 }

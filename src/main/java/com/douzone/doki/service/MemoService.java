@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.douzone.doki.repository.MemoRepository;
 import com.douzone.doki.vo.MemoVo;
+import com.douzone.doki.vo.UserVo;
 
 @Service
 @Transactional(readOnly = true)
@@ -66,5 +67,15 @@ public class MemoService {
     public List<MemoVo> getAllHashList() {
 	return memoRepository.getAllHashList();
     }
-
+    
+    public boolean modifyMemo(MemoVo vo) {
+    	return memoRepository.modifyMemo(vo);
+    }
+    
+    
+    public MemoVo findMemo(Long no) {
+    	return memoRepository.findMemo(no);
+    }
+    
+    
 }

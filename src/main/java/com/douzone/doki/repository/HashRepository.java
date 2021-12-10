@@ -5,15 +5,13 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import com.douzone.doki.vo.UserVo;
+import com.douzone.doki.vo.HashVo;
 
 @Mapper
 @Repository
-public interface UserRepository {
+public interface HashRepository {
 	
-	public boolean updateUser(UserVo vo);
-	public UserVo findByNo(Long no);
-	public List<UserVo> getUserList(Long no);
+	public List<HashVo> getHashList(Long no);
 
 	
 	

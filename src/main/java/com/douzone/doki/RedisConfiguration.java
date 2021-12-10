@@ -44,12 +44,12 @@ public class RedisConfiguration {
 	
 	@Bean //
 	public void insert() {
-		ChatVo chatVo = new ChatVo();
-		chatVo.setMessage("2번 test2");
-		chatVo.setUserNo(1L);
-		chatVo.setDepartmentNo(1L);
+//		ChatVo chatVo = new ChatVo();
+//		chatVo.setMessage("2번 test2");
+//		chatVo.setUserNo(1L);
+//		chatVo.setDepartmentNo(1L);
 //		chatService.insert(chatVo);
-		System.out.println("인설트 완료");
+//		System.out.println("인설트 완료");
 		
 	}
 	
