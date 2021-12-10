@@ -32,7 +32,7 @@ public class MemoController {
     @PostMapping("/addMemo")
     public void addMemo() {
 	// 가져올 param 목록
-	// MemoVo(memoAlarmTime, repetition도 포함되어 있음, hashName은 X)
+	// MemoVo(memoAlarmTime)
 
 	// test vo, addMemo의 param으로 받아온다
 	MemoVo memoVo = new MemoVo();
@@ -50,20 +50,20 @@ public class MemoController {
 	// 넘어온 해시의 개수
 	// int hashCount = memoVo.gethashNo().length?
 	// if(hashCount > 0)
-	// for문(hashCount 만큼 memo_hash에 insert)
+		// for문(hashCount 만큼 memo_hash에 insert)
 
-	// 테스트용 hash 넣기 (front에서 처리해야한다)
-	System.out.println(memoService.addHash("잇힝"));
+        	// 테스트용 hash 넣기 (front에서 처리해야한다)
+        	System.out.println(memoService.addHash("잇힝"));
 
-	// 테스트용 hashNo
-	memoVo.setHashNo(20L);
-	// 메모 no와 해당 해시 no를 이용한다
-	System.out.println(memoService.addMemoHash(memoVo)); // memo_hash 테이블에도 insert
+        	// hash 추가 테스트용 hashNo
+        	memoVo.setHashNo(20L);
+        	// 메모 no와 해당 해시 no를 이용한다
+        	System.out.println(memoService.addMemoHash(memoVo)); // memo_hash 테이블에도 insert
 
 	// 위의 추가된 메모 하나를 select로 가져와서 화면에 다시 뿌리기?(front에서 처리가 가능하다면 여기선 불필요)
-	// memoService.getMemoList(memoVo.getNo());
+	// memoService.getMemoList(memoVo.getNo()) ???;
 
-	// 테스트용 vo
+	// alarm 테스트용 vo
 	memoVo.setMemoAlarmTime("2021-12-06 17:30:25");
 	memoVo.setRepetition("0");
 
@@ -113,25 +113,34 @@ public class MemoController {
     }
 
     @GetMapping("/getMemoListByHash")
-    public List<MemoVo> getMemoListByHash() {
+    public ResponseEntity<List<MemoVo>> getMemoListByHash() {
 	// 테스트용 vo(param으로 가져와야한다)
 	MemoVo memoVo = new MemoVo();
 	memoVo.setHashName("잇힝");
 
+	if (memoService.getMemoListByHash(memoVo) == null) {
+	    System.out.println(ResponseEntity.notFound().build());
+	    return ResponseEntity.notFound().build();
+	}
+
 	// 특정 해시를 클릭하면 해당 해시를 가진 메모 리스트를 불러온다 
 	List<MemoVo> result = memoService.getMemoListByHash(memoVo);
-	System.out.println(result);
-	System.out.println("==========================================");
-	return result;
+
+	return ResponseEntity.ok().body(result);
     }
     
     @GetMapping("/getAllHashList")
-    public List<MemoVo> getAllHashList(){
+    public ResponseEntity<List<MemoVo>> getAllHashList(){
+	
+	if (memoService.getAllHashList() == null) {
+	    System.out.println(ResponseEntity.notFound().build());
+	    return ResponseEntity.notFound().build();
+	}
 	
 	List<MemoVo> result = memoService.getAllHashList();
 	System.out.println(result);
 	System.out.println("==========================================");
-	return result;
+	return ResponseEntity.ok().body(result);
     }
 
 

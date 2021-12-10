@@ -20,5 +20,6 @@ public interface MemoRepository {
     public boolean setImportant(MemoVo vo);
     public List<MemoVo> getListByGroup(Long groupNo);
     public List<MemoVo> getMemoListByHash(MemoVo vo);
+    public List<MemoVo> getAllHashList();
 
 }
