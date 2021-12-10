@@ -40,8 +40,9 @@ public class UserController {
 	}
 	
 	//회원 수정완료시 유저 정보 업데이트 및 리다이렉트
-	@PostMapping("/update")
-	public void update(UserVo userVo) {
+	@PostMapping("/update/{no}")
+	public void update(@PathVariable Long no, UserVo userVo) {
+		userVo.setNo(no);
 		boolean result = userService.updateUser(userVo);
 		
 		System.out.println("result : " + result);
